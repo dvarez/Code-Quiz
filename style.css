@@ -1,4 +1,43 @@
-body {
-    background-color: salmon;
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: monospace;
+
+}
+
+header {
+    background: lightgreen;
+    height: 20vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 100px;
+    margin-bottom: 5vh;
+    border-bottom: 7px solid darkgreen;
+
+}
+
+#instructions {
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 2em;
+    text-align: center;
+
+}
+
+.buttons {
+    text-align: center;
+    height: 300px;
+    background-color: antiquewhite;
+    width: 400px;
+    font-size: 20px;
+
+}
+
+.startbutton {
+    background-color: lightgreen;
+    font-size: 20px;
+
 
 }
