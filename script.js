@@ -29,3 +29,53 @@ var questions = [
     },    
 
 ]
+
+var startbutton = document.querySelector(".startbutton")
+console.log(startbutton)
+var currentQuest = 0 
+var choices = document.getElementsByClassName("buttons"); 
+var choiceButton = document.querySelector("#green")
+
+function toggleQuest() {
+    var quizes = document.querySelector("#see") 
+    quizes.innerHTML = questions[currentQuest].question;
+    
+    console.log(choices)
+    for (let i= 0; i< choices.length; i++) {
+    console.log(choices[i]);    
+    choices[i].innerHTML = questions[currentQuest].answers[i];
+    
+    }
+    
+}
+
+
+startbutton.addEventListener("click", function(){
+console.log("horrah")
+toggleQuest();
+
+
+});
+
+choiceButton.addEventListener("click", function(e){
+    console.log(e.target.innerHTML)
+
+if (e.target.innerHTML==questions[currentQuest].correctAnswer) {
+    console.log("good")
+    
+} else {
+    console.log("bad")
+
+}
+ currentQuest+=1
+ toggleQuest()
+
+
+
+
+
+
+
+
+});
+
