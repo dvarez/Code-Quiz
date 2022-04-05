@@ -1,7 +1,7 @@
 # Code-Quiz
 this is a code-quiz that asks your favorite coding questions!.. can you do it!?
 
-the page can be viewed at:  
+the page can be viewed at: https://dvarez.github.io/Code-Quiz/ 
 
 Acceptance Criteria
 GIVEN I am taking a code quiz
