@@ -30,11 +30,22 @@ var questions = [
 
 ]
 
+var timeLeft = 15 * questions.length
+
 var startbutton = document.querySelector(".startbutton")
-console.log(startbutton)
+// console.log(startbutton)
 var currentQuest = 0 
 var choices = document.getElementsByClassName("buttons"); 
 var choiceButton = document.querySelector("#green")
+var timerEl = document.querySelector("#timer")
+
+// var doc ={
+//     children: [],
+//     getElementsByClassName: function(params){
+
+//     }
+// }
+// doc.getElementsByClassName()
 
 function toggleQuest() {
     var quizes = document.querySelector("#see") 
@@ -48,11 +59,35 @@ function toggleQuest() {
     }
     
 }
+// The setTimer function starts and stops the timer and triggers winGame() and loseGame()
+function startTimer() {
+    // Sets timer
+    timer = setInterval(function() {
+      timeLeft--;
+      timerEl.textContent = timeLeft;
+      if (timeLeft >= 0) {
+        // Tests if win condition is met
+        if (isWin && timeLeft > 0) {
+          // Clears interval and stops timer
+          clearInterval(timer);
+          winGame();
+        }
+      }
+      // Tests if time has run out
+      if (timeLeft === 0) {
+        // Clears interval
+        clearInterval(timer);
+        loseGame();
+      }
+    }, 1000);
+  }
 
 
 startbutton.addEventListener("click", function(){
 console.log("horrah")
 toggleQuest();
+
+startTimer()
 
 
 });
@@ -79,25 +114,16 @@ if (e.target.innerHTML==questions[currentQuest].correctAnswer) {
 
 });
 
-// The setTimer function starts and stops the timer and triggers winGame() and loseGame()
-function startTimer() {
-    // Sets timer
-    timer = setInterval(function() {
-      timerCount--;
-      timerElement.textContent = timerCount;
-      if (timerCount >= 0) {
-        // Tests if win condition is met
-        if (isWin && timerCount > 0) {
-          // Clears interval and stops timer
-          clearInterval(timer);
-          winGame();
-        }
-      }
-      // Tests if time has run out
-      if (timerCount === 0) {
-        // Clears interval
-        clearInterval(timer);
-        loseGame();
-      }
-    }, 1000);
-  }
+// 
+
+
+
+ // function foo(param1,param2, blah){
+    //     console.log(param1);
+    //     console.log(param2);
+    //     console.log(blah);
+    // }
+    // var param1 = "Hi"
+    // var fooBoo = "World"
+    
+    // foo(param1, fooBoo, [1,6,67])
