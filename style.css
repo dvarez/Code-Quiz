@@ -41,6 +41,13 @@ header {
 
 
 }
+#endGame {
+    display: none
+
+}
+
+
+
 
 .timer-text {
     padding: 55px;

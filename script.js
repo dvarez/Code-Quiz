@@ -38,6 +38,9 @@ var currentQuest = 0
 var choices = document.getElementsByClassName("buttons"); 
 var choiceButton = document.querySelector("#green")
 var timerEl = document.querySelector("#timer")
+var questionCont = document.querySelector("#questionCont")
+var endGame = document.querySelector("#endGame")
+var submitHere = document.querySelector("#submitHere")
 
 // var doc ={
 //     children: [],
@@ -65,26 +68,38 @@ function startTimer() {
     timer = setInterval(function() {
       timeLeft--;
       timerEl.textContent = timeLeft;
-      if (timeLeft >= 0) {
-        // Tests if win condition is met
-        if (isWin && timeLeft > 0) {
-          // Clears interval and stops timer
-          clearInterval(timer);
-          winGame();
-        }
-      }
+      // if (timeLeft >= 0) {
+      //   // Tests if win condition is met
+      //   if (isWin && timeLeft > 0) {
+      //     // Clears interval and stops timer
+      //     clearInterval(timer);
+      //     winGame();
+      //   }
+      // }
       // Tests if time has run out
-      if (timeLeft === 0) {
+      if (timeLeft <= 0 || currentQuest === questions.length) {
         // Clears interval
+
         clearInterval(timer);
-        loseGame();
+        endQuiz();
       }
     }, 1000);
   }
+  function endQuiz() {
+      questionCont.style.display = "none"
+      endGame.style.display = "block"
+      document.getElementById("score").textContent = timeLeft 
+  }
+
+
+
+
 
 
 startbutton.addEventListener("click", function(){
 console.log("horrah")
+
+
 toggleQuest();
 
 startTimer()
@@ -100,11 +115,15 @@ if (e.target.innerHTML==questions[currentQuest].correctAnswer) {
     
 } else {
     console.log("bad")
+    timeLeft -= 10 
+
 
 }
  currentQuest+=1
- toggleQuest()
 
+ if ( currentQuest < questions.length) {
+ toggleQuest()
+}
 
 
 
@@ -113,6 +132,12 @@ if (e.target.innerHTML==questions[currentQuest].correctAnswer) {
 
 
 });
+
+submitHere.addEventListener("click", function(e) {
+  localStorage.setItem(document.getElementById("gameTime").value,timeLeft)
+
+
+})
 
 // 
 
